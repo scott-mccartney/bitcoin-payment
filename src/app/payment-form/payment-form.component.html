@@ -1,0 +1,36 @@
+<div class="bitcoin-payment-form">
+    <form class="search-form">
+      <mat-form-field class="half-width">
+        <input matInput [(ngModel)]="firstNameInput" placeholder="First Name" name="firstName">
+      </mat-form-field>
+      <mat-form-field class="half-width">
+        <input matInput [(ngModel)]="lastNameInput" placeholder="Last Name" name="lastName">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput [(ngModel)]="accountNumberInput" placeholder="Account Number" name="accountNumber">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select [(ngModel)]="chosenPaymentType" placeholder="Payment Type" name="paymentType">
+          <mat-option *ngFor="let pt of paymentTypes" [value]="pt">
+            {{ pt }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="half-width">
+        <span matPrefix><mat-icon>attach_money</mat-icon></span>
+        <input matInput type="number" min="0.00" step="0.01" [formControl]="usdAmountInput" placeholder="Amount (USD)" name="usdAmount">
+      </mat-form-field>
+      <mat-form-field class="half-width">
+        <input matInput type="number" min="0.00" step="0.000001" [formControl]="cryptoAmountInput"  placeholder="Amount (BTC)" name="cryptoAmount">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="generateQrCode()"
+        [disabled]="chosenPaymentType !== 'Bitcoin' && chosenPaymentType !== 'Ethereum'"> Generate QR </button>
+      <button mat-raised-button color="primary" (click)="sendBitcoin()"> Pay </button>
+
+      <div class="vert-spacer"></div>
+      <qrcode [qrdata]="qrCodeString" [size]="256" [level]="'M'" [hidden]="qrCodeHidden"></qrcode>
+      <mat-card-footer> {{ message }} </mat-card-footer>
+    </form>
+</div>

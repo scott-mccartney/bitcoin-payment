@@ -1,0 +1,18 @@
+<div>
+  <mat-toolbar color="primary">
+    <span>Bitcoin Payment Form</span>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav-content>
+      <mat-card>
+        <app-payment-form></app-payment-form>
+      </mat-card>
+    </mat-sidenav-content>
+
+    <mat-sidenav #sidenav #right position="end" mode="side" opened="true" class="example-sidenav" [fixedInViewport]="false">
+      <app-crypto-prices></app-crypto-prices>
+    </mat-sidenav>
+  </mat-sidenav-container>
+
+</div>

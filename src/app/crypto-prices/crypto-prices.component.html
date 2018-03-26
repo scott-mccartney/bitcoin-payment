@@ -1,0 +1,7 @@
+<h2>Crypto Prices:</h2>
+<mat-list role="list">
+  <mat-list-item *ngFor="let c of cryptoPrices">
+      <img matListAvatar src="{{c.ico}}" alt="">
+      {{ c.crypto }}: {{ c.price | currency:'USD' }}
+  </mat-list-item>
+</mat-list>

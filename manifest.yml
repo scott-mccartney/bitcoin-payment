@@ -1,0 +1,8 @@
+---
+applications:
+- name: bitcoin-payment
+  buildpack: staticfile_current
+  memory: 64M
+  host: bitcoin-payment
+  timeout: 300
+  health-check-type: port
